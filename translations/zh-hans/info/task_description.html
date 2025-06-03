@@ -1,0 +1,140 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+ 
+<p class="for_info_only"><i>
+    最初的 Cowsays 是用 Perl 编程语言编写的、
+    因此很容易适应 Unix 的系统任务。
+    它们可以执行一些功能，比如告诉用户他们的主目录已满、
+    有新邮件等功能。现在，你将自己编写实现这一经典 Unix 程序的方法。
+    这个概念可以教会你如何准备和格式化控制台输出的文本。
+</i></p>
+
+<p>
+    我们的牛还小，只会说一些我们教它的单词。
+    它不仅会说话，而且如果我们要求它变成著名的 Tux
+    (<a target="_blank" href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>) 。
+</p>
+
+<div>
+    我们会给您一些文本，您的函数应将其格式化为 "奶牛 "的语音。
+    让我们来研究一下这个问题的规则：
+    <ul class="rules">
+        <li>
+            牛总是一样的，只有引号会改变。
+        </li>
+        <li>
+            连续多个空格由一个空格代替。
+        </li>
+        <li>
+            顶部边框由下划线字符组成。它从一个空格开始，在边框列之前结束。
+        </li>
+        <li>
+            每行引号由以下部分组成：quote border(1)、空格(1)、行(1-39)、空格(1)、quote border(1)。
+        </li>
+        <li>
+            如果行少于 40 个字符，则可合并为一个字符串。字符串用<strong>&lt;&gt; 引用。</strong>
+        </li>
+        <li>
+            如果行大于或等于 40 个字符，则应按以下规则分割：
+            <ul>
+                <li>
+                    最大行大小为 39 个字符。如果行中有任何空格、
+                    则按最右边的空格分割（该空格将从文本中删除），否则按前 39 个字符分割。
+                </li>
+                <li>
+                    分割后，在每行末尾添加空格，使所有行的长度一致。
+                </li>
+                <li>
+                    第一行边框：<strong>/\</strong>
+                </li>
+                <li>
+                    中线边框<strong>||</strong>
+                </li>
+                <li>
+                    最后一行边框<strong>\/</strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            底部边框由减号组成。长度与顶部相同。
+        </li>
+        <li>cowsay 控制台程序在某些情况下有奇怪的行为，这里不做测试。</li>
+    </ul>
+</div>
+
+<div>
+    <pre>
+     _________________________________
+    / Dog goes woof                   \
+    | Cat goes meow                   |
+    | Bird goes tweet                 |
+    | And mouse goes squeek           |
+    | Cow goes moo                    |
+    | Duck goes quack                 |
+    \ And the solution will go to you /
+     ---------------------------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    </pre>
+</div>
+<p>
+   <strong>输入</strong>文本字符串 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出</strong>控制台的字符串结果 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>示例</strong>
+    </p>
+    <pre class="brush: python">
+cowsay('Checkio rulezz') == r'''
+ ________________
+< Checkio rulezz>
+ ----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+cowsay('A longtextwithonlyonespacetofittwolines.') == r'''
+ ________________________________________
+/ A                                      \
+\ longtextwithonlyonespacetofittwolines. /
+ ----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+
+cowsay('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') == r'''
+ _________________________________________
+/ Lorem ipsum dolor sit amet, consectetur \
+| adipisicing elit, sed do eiusmod tempor |
+| incididunt ut labore et dolore magna    |
+\ aliqua.                                 /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''</pre>
+</div>
+
+
+
+<p>
+   <strong>前提条件</strong>
+    0 &lt; len(text) &lt; 858；<br>
+   <strong>文本</strong>至少包含最后一个非空格字符；<br>
+   <strong>文本</strong>只包含 ASCII 字母、数字和标点符号。
+</p>
