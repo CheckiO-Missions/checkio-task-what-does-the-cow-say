@@ -1,0 +1,140 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+ 
+<p class="for_info_only"><i>
+    Die ursprünglichen Cowsays sind in der Programmiersprache Perl geschrieben,
+    geschrieben und lassen sich daher leicht an Systemaufgaben unter Unix anpassen.
+    Sie können Funktionen ausführen, wie z.B. den Benutzern mitteilen, dass ihre Home-Verzeichnisse voll sind,
+    dass sie neue Mails haben, usw. Jetzt werden Sie Ihre eigene Umsetzung für dieses klassische Unix-Programm schreiben.
+    Anhand dieses Konzepts können Sie lernen, wie man Text für die Konsolenausgabe vorbereitet und formatiert.
+</i></p>
+
+<p>
+    Unsere Kuh ist jung und kann nur einige der Wörter sagen, die wir ihr beibringen.
+    Sie kann nicht nur sprechen, sondern sie kann sich auch in den berühmten Tux
+    (<a target="_blank" href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>) verwandeln, wenn wir sie nett darum bitten.
+</p>
+
+<div>
+    Sie erhalten einen Text und Ihre Funktion soll ihn in der Sprache der Kuh formatieren.
+    Lassen Sie uns die Regeln für dieses Problem untersuchen:
+    <ul class="rules">
+        <li>
+            Die Kuh ist immer die gleiche, nur das Zitat ändert sich.
+        </li>
+        <li>
+            Mehrere Leerzeichen in einer Reihe werden durch ein Leerzeichen ersetzt.
+        </li>
+        <li>
+            Die obere Umrandung besteht aus Unterstrichzeichen. Er beginnt mit einem einzelnen Leerzeichen und endet vor der Randspalte.
+        </li>
+        <li>
+            Jede Zeile des Anführungszeichens besteht aus diesen Teilen: quote border(1), space(1), line(1-39), space(1), quote border(1).
+        </li>
+        <li>
+            Ist die Zeile kürzer als 40 Zeichen, passt sie in eine Zeichenkette. Die Zeichenkette wird in <strong>&lt;&gt;</strong> zitiert <strong>.</strong>
+        </li>
+        <li>
+            Wenn die Zeile größer oder gleich 40 Zeichen ist, sollte sie nach diesen Regeln aufgeteilt werden:
+            <ul>
+                <li>
+                    Die maximale Zeilenlänge beträgt 39 Zeichen. Wenn sich Leerzeichen in der Zeile befinden,
+                    teilen Sie die Zeile durch das Leerzeichen ganz rechts (dieses Leerzeichen wird aus dem Text entfernt), ansonsten nehmen Sie die ersten 39 Zeichen.
+                </li>
+                <li>
+                    Richten Sie nach der Aufteilung alle Zeilen auf die gleiche Länge aus, indem Sie am Ende jeder Zeile Leerzeichen hinzufügen.
+                </li>
+                <li>
+                    Erste Zeilenränder: <strong>/\</strong>
+                </li>
+                <li>
+                    Mittlere Zeilenränder: <strong>||</strong>
+                </li>
+                <li>
+                    Letzte Zeilenränder: <strong>\/</strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Der untere Rand besteht aus dem Minuszeichen. Hat die gleiche Länge wie oben.
+        </li>
+        <li>das cowsay-Konsolenprogramm verhält sich in bestimmten Fällen seltsam, diese Fälle werden hier nicht getestet.</li>
+    </ul>
+</div>
+
+<div>
+    <pre>
+     _________________________________
+    / Dog goes woof                   \
+    | Cat goes meow                   |
+    | Bird goes tweet                 |
+    | And mouse goes squeek           |
+    | Cow goes moo                    |
+    | Duck goes quack                 |
+    \ And the solution will go to you /
+     ---------------------------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    </pre>
+</div>
+<p>
+   <strong>Eingabe:</strong> Text als Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Das Ergebnis für die Konsole als String <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+    <pre class="brush: python">
+cowsay('Checkio rulezz') == r'''
+ ________________
+< Checkio rulezz>
+ ----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+cowsay('A longtextwithonlyonespacetofittwolines.') == r'''
+ ________________________________________
+/ A                                      \
+\ longtextwithonlyonespacetofittwolines. /
+ ----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+
+cowsay('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') == r'''
+ _________________________________________
+/ Lorem ipsum dolor sit amet, consectetur \
+| adipisicing elit, sed do eiusmod tempor |
+| incididunt ut labore et dolore magna    |
+\ aliqua.                                 /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''</pre>
+</div>
+
+
+
+<p>
+   <strong>Vorbedingung:</strong>
+    0 &lt; len(text) &lt; 858;<br>
+   <strong>text</strong> enthält mindestens das letzte Zeichen ohne Leerzeichen;<br>
+   <strong>text</strong> enthält nur ASCII-Buchstaben, Ziffern und Interpunktionszeichen.
+</p>
