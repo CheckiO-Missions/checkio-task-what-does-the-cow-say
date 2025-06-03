@@ -1,0 +1,140 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+ 
+<p class="for_info_only"><i>
+    Les Cowsay originaux sont écrits dans le langage de programmation Perl,
+    et sont donc facilement adaptables aux tâches du système Unix.
+    Ils peuvent remplir des fonctions telles que signaler aux utilisateurs que leur répertoire personnel est plein, qu'ils ont du nouveau courrier, etc,
+    qu'ils ont du nouveau courrier, etc. Vous allez maintenant écrire votre propre réalisation pour ce programme classique d'Unix.
+    Ce concept peut vous apprendre à préparer et à formater du texte pour la sortie de la console.
+</i></p>
+
+<p>
+    Notre vache est jeune et ne peut dire que certains des mots que nous lui enseignons.
+    Non seulement elle parle, mais cette vache peut se transformer en la célèbre Tux
+    (<a target="_blank" href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>) si nous le lui demandons gentiment.
+</p>
+
+<div>
+    On vous donne un texte et votre fonction doit le mettre en forme dans le discours de la "vache".
+    Examinons les règles de ce problème:
+    <ul class="rules">
+        <li>
+            La vache est toujours la même, seule la citation change.
+        </li>
+        <li>
+            Les espaces multiples dans une rangée sont remplacés par un espace.
+        </li>
+        <li>
+            La bordure supérieure est constituée de caractères de soulignement. Elle commence par un seul espace et se termine avant la colonne de bordure.
+        </li>
+        <li>
+            Chaque ligne de la citation se compose des éléments suivants: bordure de citation(1), espace(1), ligne(1-39), espace(1), bordure de citation(1).
+        </li>
+        <li>
+            Si la ligne est inférieure à 40 caractères, elle tiendra dans une seule chaîne. La chaîne est citée en <strong>&lt;&gt;.</strong>
+        </li>
+        <li>
+            Si la ligne est supérieure ou égale à 40 caractères, elle doit être scindée selon ces règles:
+            <ul>
+                <li>
+                    La taille maximale d'une ligne est de 39 caractères. S'il y a des espaces dans la ligne, coupez-la par l'espace le plus à droite (cet espace est supprimé du texte),
+                    coupez-la par l'espace le plus à droite (cet espace est supprimé du texte), sinon prenez les 39 premiers caractères.
+                </li>
+                <li>
+                    Après la division, alignez toutes les lignes à la même longueur en ajoutant des espaces à la fin de chaque ligne.
+                </li>
+                <li>
+                    Bordures de la première ligne: <strong>/\</strong>
+                </li>
+                <li>
+                    Limites de la ligne médiane: <strong>||</strong>
+                </li>
+                <li>
+                    Limites de la dernière ligne: <strong>\/</strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            La bordure inférieure est constituée du signe moins. Il a la même longueur que le bord supérieur.
+        </li>
+        <li>le programme de console cowsay a un comportement étrange dans certains cas, ces cas ne seront pas testés ici.</li>
+    </ul>
+</div>
+
+<div>
+    <pre>
+     _________________________________
+    / Dog goes woof                   \
+    | Cat goes meow                   |
+    | Bird goes tweet                 |
+    | And mouse goes squeek           |
+    | Cow goes moo                    |
+    | Duck goes quack                 |
+    \ And the solution will go to you /
+     ---------------------------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    </pre>
+</div>
+<p>
+   <strong>Entrée:</strong> Texte sous forme de chaîne <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Le résultat pour la console sous forme de chaîne de caractères <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+    <pre class="brush: python">
+cowsay('Checkio rulezz') == r'''
+ ________________
+< Checkio rulezz>
+ ----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+cowsay('A longtextwithonlyonespacetofittwolines.') == r'''
+ ________________________________________
+/ A                                      \
+\ longtextwithonlyonespacetofittwolines. /
+ ----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+
+cowsay('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') == r'''
+ _________________________________________
+/ Lorem ipsum dolor sit amet, consectetur \
+| adipisicing elit, sed do eiusmod tempor |
+| incididunt ut labore et dolore magna    |
+\ aliqua.                                 /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''</pre>
+</div>
+
+
+
+<p>
+   <strong>Condition préalable:</strong>
+    0 &lt; len(text) &lt; 858;<br>
+   <strong>le texte</strong> contient au moins le dernier caractère non spatial;<br>
+   <strong>le texte</strong> ne contient que des lettres, des chiffres et des signes de ponctuation ASCII.
+</p>
