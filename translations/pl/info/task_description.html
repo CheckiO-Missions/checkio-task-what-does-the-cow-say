@@ -1,0 +1,140 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+ 
+<p class="for_info_only"><i>
+    Oryginalne Cowsays zostały napisane w języku programowania Perl,
+    i jako takie są łatwo adaptowalne do zadań systemowych w Uniksie.
+    Mogą one wykonywać takie funkcje, jak informowanie użytkowników, że ich katalogi domowe są pełne,
+    że mają nową pocztę itp. Teraz napiszą Państwo własną implementację tego klasycznego programu uniksowego.
+    Ta koncepcja może nauczyć Państwa, jak przygotować i sformatować tekst dla wyjścia konsoli.
+</i></p>
+
+<p>
+    Nasza krowa jest młoda i potrafi powiedzieć tylko niektóre słowa, których ją uczymy.
+    Nie tylko mówi, ale ta krowa może zmienić się w słynnego Tuxa
+    (<a target="_blank" href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>), jeśli ładnie ją poprosimy.
+</p>
+
+<div>
+    Otrzymują Państwo pewien tekst, a Państwa funkcja powinna sformatować go w mowie "krowy".
+    Proszę przeanalizować reguły dla tego problemu:
+    <ul class="rules">
+        <li>
+            Krowa jest zawsze taka sama, zmienia się tylko cytat.
+        </li>
+        <li>
+            Wiele spacji w rzędzie jest zastępowanych jedną spacją.
+        </li>
+        <li>
+            Górne obramowanie składa się ze znaków podkreślenia. Zaczyna się od pojedynczej spacji i kończy przed kolumną obramowania.
+        </li>
+        <li>
+            Każdy wiersz cytatu składa się z następujących części: quote border(1), space(1), line(1-39), space(1), quote border(1).
+        </li>
+        <li>
+            Jeśli linia ma mniej niż 40 znaków, zmieści się w jednym ciągu znaków. Łańcuch jest cytowany w <strong>&lt;&gt;.</strong>
+        </li>
+        <li>
+            Jeśli linia jest większa lub równa 40 znaków, powinna zostać podzielona według tych zasad:
+            <ul>
+                <li>
+                    Maksymalny rozmiar linii to 39 znaków. Jeśli w wierszu znajdują się spacje,
+                    proszę rozdzielić go prawą skrajną spacją (ta spacja jest usuwana z tekstu), w przeciwnym razie proszę wziąć pierwsze 39 znaków.
+                </li>
+                <li>
+                    Po podziale proszę wyrównać wszystkie wiersze do tej samej długości, dodając spacje na końcu każdego wiersza.
+                </li>
+                <li>
+                    Granice pierwszego wiersza: <strong>/\</strong>
+                </li>
+                <li>
+                    Granice linii środkowej: <strong>||</strong>
+                </li>
+                <li>
+                    Granice ostatniego wiersza: <strong>\/</strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Dolne obramowanie składa się ze znaku minus. Ma taką samą długość jak górna.
+        </li>
+        <li>program konsoli cowsay ma dziwne zachowanie w niektórych przypadkach, te przypadki nie będą tutaj testowane.</li>
+    </ul>
+</div>
+
+<div>
+    <pre>
+     _________________________________
+    / Dog goes woof                   \
+    | Cat goes meow                   |
+    | Bird goes tweet                 |
+    | And mouse goes squeek           |
+    | Cow goes moo                    |
+    | Duck goes quack                 |
+    \ And the solution will go to you /
+     ---------------------------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    </pre>
+</div>
+<p>
+   <strong>Wejście:</strong> Tekst jako ciąg znaków <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Wynik dla konsoli jako ciąg znaków <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+    <pre class="brush: python">
+cowsay('Checkio rulezz') == r'''
+ ________________
+< Checkio rulezz>
+ ----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+cowsay('A longtextwithonlyonespacetofittwolines.') == r'''
+ ________________________________________
+/ A                                      \
+\ longtextwithonlyonespacetofittwolines. /
+ ----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''
+
+cowsay('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') == r'''
+ _________________________________________
+/ Lorem ipsum dolor sit amet, consectetur \
+| adipisicing elit, sed do eiusmod tempor |
+| incididunt ut labore et dolore magna    |
+\ aliqua.                                 /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+'''</pre>
+</div>
+
+
+
+<p>
+   <strong>Warunek wstępny:</strong>
+    0 &lt; len(text) &lt; 858;<br>
+   <strong>tekst</strong> zawiera co najmniej ostatni znak niebędący spacją;<br>
+   <strong>tekst</strong> zawiera tylko litery ASCII, cyfry i znaki interpunkcyjne.
+</p>
