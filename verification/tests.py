@@ -283,93 +283,92 @@ extra_out_wrap_34 = r'''
 TESTS = {
     "Basics": [
         {
-            "input": base_in_one_line,
+            "input": [base_in_one_line],
             "answer": base_out_one_line,
         },
         {
-            "input": base_in_long_without_spaces_full_line,
+            "input": [base_in_long_without_spaces_full_line],
             "answer": base_out_long_without_spaces_full_line,
         },
         {
-            "input": base_in_long_without_spaces_two_lines,
+            "input": [base_in_long_without_spaces_two_lines],
             "answer": base_out_long_without_spaces_two_lines,
         },
         {
-            "input": base_in_without_spaces_three_line,
+            "input": [base_in_without_spaces_three_line],
             "answer": base_out_without_spaces_three_line,
         },
         {
-            "input": base_in_without_spaces_two_line_full,
+            "input": [base_in_without_spaces_two_line_full],
             "answer": base_out_without_spaces_two_line_full,
         },
         {
-            "input": base_in_with_spaces_two_line,
+            "input": [base_in_with_spaces_two_line],
             "answer": base_out_with_spaces_two_line,
         },
-
         {
-            "input": base_in_many_lines,
+            "input": [base_in_many_lines],
             "answer": base_out_many_lines,
         },
     ],
     "Edge": [
         {
-            "input": edge_in_space_before,
-            "answer": edge_out_space_before
+            "input": [edge_in_space_before],
+            "answer": edge_out_space_before,
         },
         {
-            "input": edge_in_space_after,
-            "answer": edge_out_space_after
+            "input": [edge_in_space_after],
+            "answer": edge_out_space_after,
         },
         {
-           "input": edge_in_spaces_around,
-           "answer": edge_out_spaces_around
+           "input": [edge_in_spaces_around],
+           "answer": edge_out_spaces_around,
         },
         {
-           "input": edge_in_many_spaces_around,
-           "answer": edge_out_spaces_around
+           "input": [edge_in_many_spaces_around],
+           "answer": edge_out_spaces_around,
         },
-         {
-            "input": edge_in_onechar,
+        {
+            "input": [edge_in_onechar],
             "answer": edge_out_one_char,
         },
     ],
     "Extra": [
         {
-            "input": extra_in_two_lines_with_small_start,
+            "input": [extra_in_two_lines_with_small_start],
             "answer": extra_out_two_lines_with_small_start,
         },
         {
-            "input": extra_in_long_text,
-            "answer": extra_out_long_text
+            "input": [extra_in_long_text],
+            "answer": extra_out_long_text,
         },
         {
-            "input": extra_in_two_lines,
-            "answer": extra_out_two_lines
+            "input": [extra_in_two_lines],
+            "answer": extra_out_two_lines,
         },
         {
-            "input": extra_in_wrap_39,
-            "answer": extra_out_wrap_39
+            "input": [extra_in_wrap_39],
+            "answer": extra_out_wrap_39,
         },
         {
-            "input": extra_in_wrap_38,
-            "answer": extra_out_wrap_38
+            "input": [extra_in_wrap_38],
+            "answer": extra_out_wrap_38,
         },
         {
-            "input": extra_in_wrap_37,
-            "answer": extra_out_wrap_37
+            "input": [extra_in_wrap_37],
+            "answer": extra_out_wrap_37,
         },
         {
-            "input": extra_in_wrap_36,
-            "answer": extra_out_wrap_36
+            "input": [extra_in_wrap_36],
+            "answer": extra_out_wrap_36,
         },
         {
-            "input": extra_in_wrap_35,
-            "answer": extra_out_wrap_35
+            "input": [extra_in_wrap_35],
+            "answer": extra_out_wrap_35,
         },
         {
-            "input": extra_in_wrap_34,
-            "answer": extra_out_wrap_34
+            "input": [extra_in_wrap_34],
+            "answer": extra_out_wrap_34,
         },
     ]
 }

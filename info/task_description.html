@@ -1,16 +1,18 @@
-<style>
-    ul.rules li {
-        margin-left: 20px;
-    }
-</style>
-<p>
-    <i>Lets cow say!</i><br/>
-</p>
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+ 
+<p class="for_info_only"><i>
+    The original Cowsays are written in the Perl programming language,
+    and as such are easily adaptable to system tasks in Unix.
+    They can perform functions such as telling users their home directories are full,
+    that they have new mail, etc. Now you will write your own realization for this classic unix program.
+    This concept can teach you how to prepare and format text for the console output.
+</i></p>
+
 <p>
     Our cow is young and can only say some of the words we teach it.
     Not only does it talk, but this cow can turn into the famous Tux
-    (<a href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>) if we ask it nicely.
-
+    (<a target="_blank" href="http://en.wikipedia.org/wiki/Cowsay">wiki/Cowsay</a>) if we ask it nicely.
 </p>
 
 <div>
@@ -41,7 +43,7 @@
                 </li>
                 <li>
                     After the split align all lines to same length by adding spaces at the end of each line.
-                <li>
+                </li>
                 <li>
                     First line borders: <strong>/\</strong>
                 </li>
@@ -49,13 +51,13 @@
                     Middle line borders: <strong>||</strong>
                 </li>
                 <li>
-                    Last line borders: <strong>\/</strong></li>
+                    Last line borders: <strong>\/</strong>
+                </li>
             </ul>
         </li>
         <li>
             The bottom border consists of the minus sign. Has same length as top.
         </li>
-
         <li>cowsay console program has strange behavior in certain cases, this cases will not be tested here.</li>
     </ul>
 </div>
@@ -77,29 +79,18 @@
                     ||----w |
                     ||     ||
     </pre>
-    <strong>What does the cow say?</strong>
 </div>
-
-<br>
 <p>
-    <strong>Input: </strong> Text as a string.
+    <strong>Input:</strong> Text as a string <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
 </p>
 
 <p>
-    <strong>Output: </strong> The result for the console as a string.
-</p>
-
-<p>
-    <strong>Hint:</strong> Read python docs (<a href="http://docs.python.org/2/library/string.html">2.7</a>,
-    <a href="http://docs.python.org/3/library/stdtypes.html#string-methods">3.3</a>)
-    about formatting styles (str.format and %).
-    Notice for <strong>r</strong> before the string. It is a raw string and they use different rules for interpreting backslash
-    escape sequences.
+    <strong>Output:</strong> The result for the console as a string <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
 </p>
 
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
     <pre class="brush: python">
 cowsay('Checkio rulezz') == r'''
@@ -136,19 +127,10 @@ cowsay('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             (__)\       )\/\
                 ||----w |
                 ||     ||
-'''
-
-    </pre>
+'''</pre>
 </div>
 
-<p class="for_info_only">
-    <strong>How it is used: </strong>
-    The original Cowsays are written in the Perl programming language,
-    and as such are easily adaptable to system tasks in Unix.
-    They can perform functions such as telling users their home directories are full,
-    that they have new mail, etc. Now you will write your own realisation for this classic unix program.
-    This concept can teach you how to prepare and format text for the console output.
-</p>
+
 
 <p>
     <strong>Precondition:</strong>
